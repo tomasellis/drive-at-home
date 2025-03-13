@@ -17,7 +17,7 @@ const conn = globalForDb.conn ?? createPool({
   port: parseInt(env.SINGLESTORE_PORT),
   user: env.SINGLESTORE_USER,
   password: env.SINGLESTORE_PASS,
-  database: env.DATABASE_URL,
+  database: env.SINGLESTORE_DATABASE,
   ssl: {},
   maxIdle: 0
 })
@@ -27,4 +27,5 @@ conn.addListener("error", (err) => {
   console.error("Database connecton error:", err)
 })
 
-export const db = drizzle(conn, { schema });
+export const db = drizzle({ client: conn, schema });
+
