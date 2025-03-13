@@ -15,11 +15,11 @@ export type Folder = {
 };
 
 export const mockFolders: Folder[] = [
-  { id: 1, name: "root", type: "folder", parent: null },
-  { id: 2, name: "Documents", type: "folder", parent: "root" },
-  { id: 3, name: "Images", type: "folder", parent: "root" },
-  { id: 8, name: "Work", type: "folder", parent: "root" },
-  { id: 9, name: "Presentations", type: "folder", parent: "3" },
+  { id: "root", name: "root", type: "folder", parent: null },
+  { id: "1", name: "documents", type: "folder", parent: "root" },
+  { id: "2", name: "Images", type: "folder", parent: "root" },
+  { id: "3", name: "Work", type: "folder", parent: "root" },
+  { id: "8", name: "Presentations", type: "folder", parent: "3" },
 ];
 
 export const mockFiles: File[] = [
@@ -28,7 +28,7 @@ export const mockFiles: File[] = [
     name: "Resume.pdf",
     type: "file",
     url: "/files/resume.pdf",
-    parent: "root",
+    parent: "1",
     size: "1.2 MB",
   },
   {
