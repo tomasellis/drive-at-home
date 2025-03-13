@@ -10,6 +10,6 @@
 
 ## 31-3-25
 
-- [ ] Change folders to links, rm client state
+- [x] Change folders to links, rm client state
 - [ ] Cleanup db and data fetching
 - [ ] Homepage
