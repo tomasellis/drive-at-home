@@ -7,6 +7,12 @@
 - [x] Add auth
 - [x] Add file uploading
 - [x] Add analytics
-- [ ] Sort order
-- [ ] Add delete files button
+- [x] Sort order
+- [x] Add delete files button
 - [ ] Real homepage, onboarding
+
+## Follow up
+
+### Folder deletions
+
+Make sure to fetch all the folders that have it as parent, and the children

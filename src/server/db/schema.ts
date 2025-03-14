@@ -21,6 +21,7 @@ export const files_table = createTable(
     name: text("name"),
     size: int("size"),
     url: text("url"),
+    //fileKey: text("file_key").notNull(),
     parent: bigint("parent", { mode: "number", unsigned: true }).notNull(),
     createdAt: timestamp("created_at").notNull().defaultNow(),
   },
