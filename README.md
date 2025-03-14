@@ -11,5 +11,5 @@
 ## 31-3-25
 
 - [x] Change folders to links, rm client state
-- [ ] Cleanup db and data fetching
+- [x] Cleanup db and data fetching
 - [ ] Homepage
