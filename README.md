@@ -10,7 +10,8 @@
 
 ## 14-3-25
 
-- [ ] Real homepage
-- [ ] Upload files to the right folder
+- [x] Can only upload to user folder
+- [x] Upload files to the right folder
 - [ ] Delete files button
 - [ ] Allow files that aren't images to be uploaded
+- [ ] Real homepage
