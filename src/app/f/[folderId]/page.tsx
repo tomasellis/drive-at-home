@@ -1,4 +1,4 @@
-import DriveContents from "../../drive-contents";
+import DriveContents from "./drive-contents";
 import { z } from "zod";
 import { QUERIES } from "~/server/db/queries";
 
