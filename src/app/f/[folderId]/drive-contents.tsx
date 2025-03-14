@@ -57,12 +57,6 @@ export default function DriveContents(props: {
         </header>
 
         <div className="mb-6 flex items-center">
-          <Link
-            href="/f/1"
-            className="font-medium text-zinc-400 hover:text-white"
-          >
-            My Drive
-          </Link>
           {props.parents.map((folder) => (
             <div key={folder.id} className="flex items-center">
               <ChevronRight className="mx-2 text-zinc-600" size={16} />

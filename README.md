@@ -9,7 +9,7 @@
 - [x] Add analytics
 - [x] Sort order
 - [x] Add delete files button
-- [ ] Real homepage, onboarding
+- [x] Real homepage, onboarding
 
 ## Follow up
 
