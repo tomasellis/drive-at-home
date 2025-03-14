@@ -1,4 +1,6 @@
-import { Folder as FolderIcon, FileIcon, Trash2Icon } from "lucide-react";
+"use client";
+
+import { FolderIcon, FileIcon, Trash2Icon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "~/components/ui/button";
 import { deleteFile } from "~/server/actions";
@@ -10,25 +12,27 @@ export function FileRow(props: { file: typeof files_table.$inferSelect }) {
   return (
     <li
       key={file.id}
-      className="hover:bg-gray-750 border-b border-gray-700 px-6 py-4"
+      className="border-b border-zinc-800 px-6 py-4 transition-colors hover:bg-zinc-800/50"
     >
       <div className="grid grid-cols-12 items-center gap-4">
         <div className="col-span-6 flex items-center">
           <a
             href={file.url ?? "#"}
             target="_blank"
-            className="flex items-center text-gray-100 hover:text-blue-400"
+            className="flex items-center text-white transition-colors hover:text-zinc-300"
+            rel="noreferrer"
           >
-            <FileIcon className="mr-3" size={20} />
+            <FileIcon className="mr-3 text-zinc-400" size={20} />
             {file.name}
           </a>
         </div>
-        <div className="col-span-2 text-gray-400">{"file"}</div>
-        <div className="col-span-3 text-gray-400">{file.size}</div>
-        <div className="text-gray-400l col-span-1">
+        <div className="col-span-2 text-zinc-400">{"file"}</div>
+        <div className="col-span-3 text-zinc-400">{file.size}</div>
+        <div className="col-span-1">
           <Button
             aria-label="Delete File"
-            variant={"ghost"}
+            variant="ghost"
+            className="text-zinc-400 hover:bg-zinc-800 hover:text-white"
             onClick={() => deleteFile(file.id)}
           >
             <Trash2Icon size={20} />
@@ -47,20 +51,20 @@ export function FolderRow(props: {
   return (
     <li
       key={folder.id}
-      className="hover:bg-gray-750 border-b border-gray-700 px-6 py-4"
+      className="border-b border-zinc-800 px-6 py-4 transition-colors hover:bg-zinc-800/50"
     >
       <div className="grid grid-cols-12 items-center gap-4">
         <div className="col-span-6 flex items-center">
           <Link
             href={`/f/${folder.id}`}
-            className="flex items-center text-gray-100 hover:text-blue-400"
+            className="flex items-center text-white transition-colors hover:text-zinc-300"
           >
-            <FolderIcon className="mr-3" size={20} />
+            <FolderIcon className="mr-3 text-zinc-400" size={20} />
             {folder.name}
           </Link>
         </div>
-        <div className="col-span-3 text-gray-400"></div>
-        <div className="col-span-3 text-gray-400"></div>
+        <div className="col-span-3 text-zinc-400">folder</div>
+        <div className="col-span-3 text-zinc-400"></div>
       </div>
     </li>
   );

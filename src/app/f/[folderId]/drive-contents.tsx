@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, FolderOpen } from "lucide-react";
 import { FileRow, FolderRow } from "./file-row";
 import type { files_table, folders_table } from "~/server/db/schema";
 import Link from "next/link";
@@ -13,6 +13,7 @@ import {
 } from "@clerk/nextjs";
 import { UploadButton } from "~/utils/uploadthing";
 import { useRouter } from "next/navigation";
+import { Button } from "~/components/ui/button";
 
 export default function DriveContents(props: {
   files: (typeof files_table.$inferSelect)[];
@@ -23,38 +24,61 @@ export default function DriveContents(props: {
   const navigate = useRouter();
 
   return (
-    <div className="min-h-screen bg-gray-900 p-8 text-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-black to-zinc-900 p-4 text-white md:p-8">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-6 flex items-center justify-between">
-          <div className="flex items-center">
-            <Link href="/f/1" className="mr-2 text-gray-300 hover:text-white">
-              My Drive
-            </Link>
-            {props.parents.map((folder) => (
-              <div key={folder.id} className="flex items-center">
-                <ChevronRight className="mx-2 text-gray-500" size={16} />
-                <Link
-                  href={`/f/${folder.id}`}
-                  className="text-gray-300 hover:text-white"
-                >
-                  {folder.name}
-                </Link>
-              </div>
-            ))}
-          </div>
-          <div>
+        <header className="mb-8 flex items-center justify-between">
+          <Link
+            href="/"
+            className="flex items-center gap-2 text-lg font-semibold text-white"
+          >
+            <FolderOpen className="h-6 w-6" />
+            <span>Drive at Home</span>
+          </Link>
+          <div className="flex items-center gap-2">
             <SignedOut>
-              <SignInButton />
-              <SignUpButton />
+              <SignInButton>
+                <Button
+                  variant="ghost"
+                  className="text-zinc-400 hover:text-white"
+                >
+                  Sign In
+                </Button>
+              </SignInButton>
+              <SignUpButton>
+                <Button className="bg-white text-black hover:bg-zinc-200">
+                  Sign Up
+                </Button>
+              </SignUpButton>
             </SignedOut>
             <SignedIn>
               <UserButton />
             </SignedIn>
           </div>
+        </header>
+
+        <div className="mb-6 flex items-center">
+          <Link
+            href="/f/1"
+            className="font-medium text-zinc-400 hover:text-white"
+          >
+            My Drive
+          </Link>
+          {props.parents.map((folder) => (
+            <div key={folder.id} className="flex items-center">
+              <ChevronRight className="mx-2 text-zinc-600" size={16} />
+              <Link
+                href={`/f/${folder.id}`}
+                className="font-medium text-zinc-400 hover:text-white"
+              >
+                {folder.name}
+              </Link>
+            </div>
+          ))}
         </div>
-        <div className="rounded-lg bg-gray-800 shadow-xl">
-          <div className="border-b border-gray-700 px-6 py-4">
-            <div className="grid grid-cols-12 gap-4 text-sm font-medium text-gray-400">
+
+        <div className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/50 shadow-xl">
+          <div className="border-b border-zinc-800 px-6 py-4">
+            <div className="grid grid-cols-12 gap-4 text-sm font-medium text-zinc-400">
               <div className="col-span-6">Name</div>
               <div className="col-span-2">Type</div>
               <div className="col-span-3">Size</div>
@@ -70,19 +94,23 @@ export default function DriveContents(props: {
             ))}
           </ul>
         </div>
-        <UploadButton
-          input={{
-            folderId: props.currentFolderId,
-          }}
-          endpoint="driveUploader"
-          onClientUploadComplete={() => {
-            navigate.refresh();
-          }}
-          onUploadError={(error: Error) => {
-            console.error(error);
-            alert(`EROR! ${error.message}`);
-          }}
-        />
+
+        <div className="mt-6">
+          <UploadButton
+            input={{
+              folderId: props.currentFolderId,
+            }}
+            endpoint="driveUploader"
+            onClientUploadComplete={() => {
+              navigate.refresh();
+            }}
+            onUploadError={(error: Error) => {
+              console.error(error);
+              alert(`ERROR! ${error.message}`);
+            }}
+            className="ut-button:bg-white ut-button:text-black ut-button:hover:bg-zinc-200 ut-button:font-medium ut-button:rounded-md ut-allowed-content:text-zinc-400"
+          />
+        </div>
       </div>
     </div>
   );
