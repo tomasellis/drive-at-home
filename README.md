@@ -16,3 +16,7 @@
 ### Folder deletions
 
 Make sure to fetch all the folders that have it as parent, and the children
+
+### Broken Transitions
+
+Fix pls
